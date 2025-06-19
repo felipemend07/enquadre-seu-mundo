@@ -27,7 +27,7 @@ else:
     uploaded_ambiente = st.sidebar.file_uploader("Envie uma imagem do seu ambiente", type=["jpg", "png"])
     if uploaded_ambiente:
         img = Image.open(uploaded_ambiente)
-        st.image(img, caption="Seu ambiente", use_column_width=True)
+        st.image(img, caption="Seu ambiente", use_container_width=True)
 
 st.sidebar.subheader("2. Escolha um Quadro")
 quadros = {
