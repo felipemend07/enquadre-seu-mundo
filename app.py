@@ -10,10 +10,11 @@ st.markdown("Simule seus quadros favoritos no ambiente desejado!")
 
 # Ambientes padrões com links novos
 ambientes = {
-    "Sala de Estar": "https://i.imgur.com/B4sFHTP.jpg",
-    "Quarto Minimalista": "https://i.imgur.com/CV07aRS.jpg",
-    "Escritório Moderno": "https://i.imgur.com/voJrsLy.jpg"
+    "Sala de Estar": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Living_room_with_classic_sofa.jpg/1280px-Living_room_with_classic_sofa.jpg",
+    "Quarto Minimalista": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Modern_bedroom.jpg/1280px-Modern_bedroom.jpg",
+    "Escritório Moderno": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Home_office_with_computer.jpg/1280px-Home_office_with_computer.jpg"
 }
+
 
 # Upload ou escolha do ambiente
 st.sidebar.subheader("1. Escolha o Ambiente")
