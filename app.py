@@ -1,6 +1,5 @@
 import streamlit as st
 from PIL import Image
-import io
 import requests
 
 st.set_page_config(layout="wide")
@@ -8,13 +7,12 @@ st.title("🖼️ Enquadre seu Mundo")
 
 st.markdown("Simule seus quadros favoritos no ambiente desejado!")
 
-# Ambientes padrões com links novos
+# Ambientes padrões com links confiáveis
 ambientes = {
     "Sala de Estar": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Living_room_with_classic_sofa.jpg/1280px-Living_room_with_classic_sofa.jpg",
     "Quarto Minimalista": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Modern_bedroom.jpg/1280px-Modern_bedroom.jpg",
     "Escritório Moderno": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Home_office_with_computer.jpg/1280px-Home_office_with_computer.jpg"
 }
-
 
 # Upload ou escolha do ambiente
 st.sidebar.subheader("1. Escolha o Ambiente")
@@ -23,8 +21,8 @@ ambiente_tipo = st.sidebar.radio("Tipo de ambiente:", ["Usar um ambiente padrão
 if ambiente_tipo == "Usar um ambiente padrão":
     ambiente_nome = st.sidebar.selectbox("Ambiente:", list(ambientes.keys()))
     url = ambientes[ambiente_nome]
-    response = requests.get(url)
-    ambiente_img = Image.open(io.BytesIO(response.content)).convert("RGBA")
+    response = requests.get(url, stream=True)
+    ambiente_img = Image.open(response.raw).convert("RGBA")
 else:
     uploaded_ambiente = st.sidebar.file_uploader("Envie uma imagem do seu ambiente", type=["jpg", "png"])
     if uploaded_ambiente:
