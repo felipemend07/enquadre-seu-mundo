@@ -7,11 +7,11 @@ st.title("🖼️ Enquadre seu Mundo")
 
 st.markdown("Simule seus quadros favoritos no ambiente desejado!")
 
-# Ambientes padrões com links confiáveis
+# Ambientes padrões com arquivos locais
 ambientes = {
-    "Sala de Estar": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Living_room_with_classic_sofa.jpg/1280px-Living_room_with_classic_sofa.jpg",
-    "Quarto Minimalista": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Modern_bedroom.jpg/1280px-Modern_bedroom.jpg",
-    "Escritório Moderno": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Home_office_with_computer.jpg/1280px-Home_office_with_computer.jpg"
+    "Sala de Estar": "ambientes/sala_de_estar.jpg",
+    "Quarto Minimalista": "ambientes/quarto_minimalista.jpg",
+    "Escritório Moderno": "ambientes/escritório_moderno.jpg"
 }
 
 # Upload ou escolha do ambiente
@@ -22,7 +22,7 @@ if ambiente_tipo == "Usar um ambiente padrão":
     ambiente_nome = st.sidebar.selectbox("Ambiente:", list(ambientes.keys()))
     url = ambientes[ambiente_nome]
     response = requests.get(url, stream=True)
-    ambiente_img = Image.open(response.raw).convert("RGBA")
+    ambiente_img = Image.open(url).convert("RGBA")
 else:
     uploaded_ambiente = st.sidebar.file_uploader("Envie uma imagem do seu ambiente", type=["jpg", "png"])
     if uploaded_ambiente:
